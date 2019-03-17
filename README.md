@@ -61,7 +61,7 @@ Shopping List notes:
 <br />
 
 ### Databases:
-<br />
+
 
 #### users
 | user_id       | username      | password |
