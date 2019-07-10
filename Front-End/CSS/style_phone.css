@@ -1,0 +1,1063 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,800');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+html {
+  overflow-y: auto;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: 'Raleway', sans-serif;
+  color: #000000;
+  background-color: #e8e8e8;
+  margin: 0;
+  overflow-y: auto;
+  height: 100%;
+}
+
+/* NAVBAR */
+
+.navbar {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: .9rem;
+  letter-spacing: .1rem;
+  background: #ff983f!important;
+  height: 3rem;
+  z-index: 2;
+  width: 19.6%;
+
+}
+
+.rowIcons {
+  width: 20%;
+  z-index: 2;
+  position: fixed;
+  margin-left: -5px;
+
+}
+
+.rowSearch {
+  width: 80%;
+  float: right;
+  align: right;
+  z-index: 2;
+  position: fixed;
+  background: #ff0000!important;
+}
+
+
+
+.icon.active,
+.icon:hover {
+  color: #ffffff;  /*Icon Color*/
+}
+
+.icon {
+  color: #fff;
+  font-size: 30px;
+  margin-left: -1.9rem;
+  position: fixed;
+  margin-top: -1rem;
+}
+
+.btnCat {
+  display: none;
+}
+
+.btnCat:active,
+.btnCat:focus,
+.btnCat:hover,
+.btnCat:after {
+  outline: 0;
+  outline-offset: -2px;
+  box-shadow: 2px 2px 3px #999;
+}
+
+/* FORM CONTROL */
+.form-control {
+  margin-left: .2rem;
+}
+
+.textSearch{
+  width: 80%;
+  margin-left: 17%;
+}
+
+.btn_search {
+  margin-left: -3rem;
+  margin-right: 1rem;
+  border-radius:50px;
+  box-shadow: 2px 2px 3px #999;
+  background-color: #fff;
+
+}
+
+.isearch {
+  color: #000000;
+}
+
+.text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
+
+
+/* BUTTON FILTER */
+.float{
+	position:fixed;
+	top: 1.05rem;
+  width: 8rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
+	right: 71%;
+	background-color:#ff983f;
+	border-radius:2px;
+  border: solid 1px #fff;
+  font-size:16px;
+  z-index:4;
+}
+
+.filterIcon{
+	font-size: 1.5rem;
+  margin-left: -.3rem;
+  margin-top: -.9rem;
+  padding-bottom: 5px;
+  display: none;
+}
+
+.textIcon{
+  color: #fff;
+  display: inline;
+
+}
+
+.btn:active,
+.btn:focus {
+  outline: 0;
+  outline-offset: -2px;
+  box-shadow: none;
+}
+
+/* BUTTON CATEGORIAS*/
+.divbtnCat{
+  margin: 0;
+  padding: 0;
+  z-index:2;
+  margin-top: 4rem;
+  margin-bottom: .5rem;
+  padding-right: .25rem;
+  position: fixed;
+  width: 100%;
+  background-color: #e8e8e8;
+}
+
+.btnCat {
+  margin: .5rem;
+  margin-bottom: .7rem;
+}
+
+
+/* OVERLAY BUTTON FILTER */
+.overlay {
+  display: none;
+  position: fixed;
+  z-index: 3;
+  top: 5rem;
+	left: 21%;
+  right: 55%;
+  background-color: rgba(255, 152, 63, 0.9);
+  border-radius:5px;
+}
+
+.overlay-content {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+}
+
+.overlay a {
+  padding: .5rem;
+  text-decoration: none;
+  font-size: 15px;
+  color: #ffffff;
+  display: block;
+  transition: 0.3s;
+  cursor:pointer;
+}
+
+.overlay a:hover, .overlay a:focus {
+  background-color: #f9bda2;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+
+
+/* CLOSE BUTTON FILTER - OUTSIDE */
+.anti-overlay {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.0);
+}
+
+
+/* CONTENT */
+
+#content {
+  width: 80%;
+  background-color: #e8e8e8;
+  transition: all 0.5s;
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow-y: scroll;
+  -webkit-font-smoothing: subpixel-antialiased;
+
+}
+
+.container-fluid {
+  margin-top: 6rem;
+  margin-bottom: 3rem;
+  background-color: #e8e8e8;
+  width: 100%;
+  padding-right: 0;
+  padding-left: 1%;
+
+}
+
+.rowProducts {
+  background-color: #e8e8e8;
+  padding-left: 0;
+  padding-right: 0;
+  border: 0;
+  width: 100%;
+}
+
+.div-fluid {
+  background-color: #fff;
+  border: 0;
+  margin: .25rem;
+}
+
+.div-fluid:hover{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19);
+}
+
+.groupNameBrand {
+    min-height: 5rem;
+    border-bottom: solid 1px;
+    border-color: #e8e8e8;
+}
+
+.name {
+  font-size: .9rem;
+  color: #636363;
+  margin-top: 0;
+
+}
+
+.brand {
+  font-size: .6rem;
+  color: #777777;
+  font-weight: bold;
+  padding-bottom: .25rem;
+}
+
+.price {
+  font-size: 1rem;
+  color: rgb(0, 0, 0);
+  margin-top: .5rem;
+}
+
+.price b{
+  font-family: 'Roboto', sans-serif;
+}
+
+.details{
+  margin-top: .5rem;
+  margin-bottom: -.5rem;
+  text-decoration: none;
+  color: #ff983f;
+}
+
+.details a{
+  color: #ff983f;
+  font-size: .9rem;
+  text-transform: uppercase;
+}
+
+.details:hover {
+    cursor:pointer;
+}
+
+
+
+.images {
+  position: relative;
+  display: block;
+}
+
+.over-image {
+  position: absolute;
+  width: 100% \9;
+  width: 175px;
+  height: 175px;
+  margin-left: -12rem;
+  margin-top: -1rem;
+}
+
+.btnAdd {
+  z-index: 1;
+  position: absolute;
+  height: 35px;
+  width: 35px;
+  border-radius: 20px;
+  margin-top: -.5rem;
+  margin-left: .5rem;
+  font-size: 1.5rem;
+  background-color: #ff983f;
+  padding: 0;
+  padding-left: 2px;
+  color: #fff;
+  box-shadow: 2px 2px 3px #999;
+}
+
+
+
+.img-fluid{
+  width: 100% \9;
+  width: 150px;
+  height: 150px;
+  image-rendering: auto;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+  width: 20%;
+  background: #e8e0dc;
+  position: fixed;
+  overflow-x: hidden;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-right: solid .5rem #e8e8e8;
+}
+
+.logo {
+  background-color: #000;
+}
+
+.logo img{
+  height: 4.4rem;
+  display: inline;
+}
+
+.catHeader{
+  background-color: #e8e0dc;
+  padding-bottom: 10px;
+  margin-top: .5rem;
+  border-bottom: none;
+  height: 1rem;
+}
+
+.divCatBold a{
+  font-weight: bold;
+}
+
+.divCatBold .outCats a{
+  font-weight: normal;
+}
+
+.divCatBold a:hover{
+  background-color: #f2f2f2;
+}
+
+
+
+.outCats:hover{
+  cursor:pointer;
+}
+
+.divCatBold li ul a{
+  font-weight:normal;
+}
+
+.sidebar .closebtn {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 50px;
+  margin-left: 50px;
+  margin-top: -7px;
+  color: #000000;
+}
+
+.sidebar li a:focus {
+    color: #fff;
+    background: #ff983f;
+}
+
+.sidebar ul.components {
+    padding: 20px 0;
+}
+
+.sidebar ul p {
+    color: #000000;
+    font-size: 1em;
+    margin-bottom: -.5rem;
+    margin-top: -.7rem;
+    font-weight: bold;
+}
+
+.sidebar ul li a {
+    padding: .5rem;
+    padding-left: 1rem;
+    font-size: .9em;
+    display: block;
+    color: #000;
+    text-decoration: none;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+
+}
+
+ul ul a {
+    font-size: .9em !important;
+    padding-left: 30px !important;
+}
+
+a.article,
+a.article:hover {
+    background: #6d7fcc !important;
+    color: #fff !important;
+}
+
+
+/* OVERLAY INDIVIDUAL PRODUCT*/
+.overlayIndProd {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  top: 5%;
+  right: .90rem;
+  left: 37.5%;
+  width: 25%;
+  background-color: #fff;
+  border-radius:10px;
+}
+
+.nameDivIP{
+  margin-top: -5.5rem;
+}
+
+.rowProductsIP {
+  margin-top: -6px;
+  text-decoration: none;
+  background-color: #fff;
+  width: 100%;
+
+}
+
+.infoMsg {
+    margin-top: -2rem;
+}
+
+.secondRowIP {
+  margin-top: -2rem;
+  margin-bottom: -2.5rem;
+}
+
+.closebtnIP {
+  font-size: 50px;
+  margin-right: 1rem;
+  color: #000000;
+}
+
+.closebtnIP:hover {
+  cursor: pointer;
+}
+
+.divClosebtnIP{
+  background-color: #fff;
+  height: 4rem;
+
+}
+
+.over-imageIP {
+  display: none;
+  width: 100% \9;
+  width: 200px;
+  height: 200px;
+  margin-top: -23rem;
+}
+
+.img-fluidIP{
+  width: 100% \9;
+  width: 200px;
+  height: 200px;
+  image-rendering: auto;
+  margin-top: -3rem;
+  margin-bottom: 2rem;
+}
+
+.nameIP {
+  font-size: 25px;
+  color: #ff983f;
+  font-weight: 400;
+  font-weight: bold;
+}
+
+.brandIP {
+  font-size: 15px;
+  margin-top: 5px;
+  text-align: left;
+  margin-left: 1.8rem;
+}
+
+.priceIP {
+  font-size: 20px;
+  color: #000;
+  font-weight: bold;
+  margin-left: 5rem;
+}
+
+.radioDivIP{
+  margin-top: 6px;
+}
+
+.addProdIP {
+  background-color: #ff983f;
+  width: 80%;
+  color: white;
+  border-radius: .3rem;
+  margin-top: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+/*OVERLAY ADD PRODUCT*/
+
+.overlayAddProduct {
+  display: none;
+  position: fixed;
+  z-index: 12;
+  top: 5%;
+  right: .90rem;
+  left: 37.5%;
+  width: 25%;
+  background-color: rgba(255, 152, 63, 0.9);
+  border-radius:10px;
+}
+
+.overlayAddProduct-content {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.errorMsg {
+    padding: 1rem;
+    display:none;
+}
+
+.errorMsg p a{
+    color: #fff;
+}
+
+.errorMsg p a:hover{
+    color: #fff;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.closebtnAP {
+  top: 0;
+  right: 25px;
+  font-size: 50px;
+  margin-top: -3.4rem;
+  color: #000000;
+  height : 10px;
+}
+
+.overlayAddProduct p {
+  padding: .5rem;
+  text-decoration: none;
+  font-size: 20px;
+  color: #ffffff;
+  margin-top: -1rem;
+  margin-bottom: -1rem;
+}
+
+.lists {
+  margin-bottom: -.8rem;
+}
+
+.overlayAddProduct a {
+  padding: .5rem;
+  text-decoration: none;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.addProdToList {
+  background-color: #fff;
+  width: 80%;
+  color: #ff983f;
+  border-radius: .3rem;
+  margin-top: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.overlayAddProduct a:hover, .overlayAddProduct a:focus {
+  color: #f1f1f1;
+}
+
+.overlayAddProduct .closebtnAP {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+/* OVERLAY ADD SUCCESS*/
+
+.overlayAddSuccess{
+  z-index: 4;
+  position: fixed;
+  bottom: .5%;
+  right: .90rem;
+  left: 20%;
+  width: 20%;
+  height: 2.5rem;
+  background-color: rgba(255, 152, 63, 1);
+  border-radius:5px;
+  display: none;
+}
+
+.overlayAddSuccess p{
+  color: #fff;
+  padding: .5rem;
+  padding-bottom: -5rem;
+}
+
+/* CHECKBOX */
+
+.containerC {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.containerC input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #fff;
+}
+
+/* When the checkbox is checked, add a blue background */
+.containerC input:checked ~ .checkmark {
+  background-color: #fff;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.containerC input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.containerC .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 6px;
+  height: 13px;
+  border: solid #ff983f; /* CHECH COLOR */
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+/* Overlay Products*/
+
+.anti-overlayIP{
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 1800px) {
+  .btnAdd{
+    margin-left: 0;
+
+  }
+}
+
+@media (max-width: 1700px) {
+
+  .over-image {
+    width: 100% \9;
+    width: 140px;
+    height: 140px;
+    margin-left: -9rem;
+    margin-top: -1rem;
+  }
+
+
+  .img-fluid{
+    width: 100% \9;
+    width: 120px;
+    height: 120px;
+    image-rendering: auto;
+  }
+
+ .float {
+    right: 69%!important;
+}
+}
+
+@media (max-width: 1500px) {
+  .btnAdd{
+    margin-left: -1rem;
+
+  }
+
+  .overlayAddSuccess{
+    width: 25%;
+  }
+
+@media (max-width: 1200px) {
+.navbar {
+  z-index: 2;
+  width: 100%;
+}
+
+.rowIcons {
+  width: 100%;
+}
+
+.rowSearch {
+  width: 100%;
+  z-index: 2;
+}
+
+.btnCat {
+  display: inline;
+  background: #ff983f!important;
+  border: 0px;
+  color: #fff;
+  transition: all 0.3s;
+  box-shadow: 2px 2px 3px #999;
+}
+
+
+
+/* FORM CONTROL */
+
+.textSearch{
+  width: 100%;
+  margin-left: 0;
+  margin-top: -.25rem;
+}
+
+.btn_search {
+  margin-left: -1rem;
+  margin-top: -.25rem;
+}
+
+
+/* BUTTON FILTER */
+.float{
+	width:37px;
+	height:37px;
+	top: 4.5rem;
+	right: 9rem!important;
+	color:#FFF;
+	border-radius:7px;
+	text-align:center;
+  font-size:25px;
+  transition: all 0.3s;
+	box-shadow: 2px 2px 3px #999;
+  border: 0;
+  z-index: 4;
+}
+
+/* BUTTON CATEGORIAS*/
+
+
+/* OVERLAY BUTTON FILTER */
+.overlay {
+  right: 7%;
+  left: 7%;
+  border-radius:7px;
+  top: 7.5rem;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+
+/* CLOSE BUTTON FILTER - OUTSIDE */
+
+.filterIcon{
+  display: inline;
+}
+
+.textIcon{
+  display: none;
+
+}
+
+/* CONTENT */
+
+#content {
+  width: 100%;
+
+}
+
+.container-fluid {
+  margin-top: 7.5rem;
+  padding-left: 0;
+}
+
+.btnAdd {
+  margin-left:2rem;
+}
+
+.rowProducts {
+  padding-left: .25rem;
+  padding-right: .25rem;
+}
+
+.div-fluid {
+  border: solid .25rem #e8e8e8;
+  border-bottom: 0;
+  border-top: 0;
+  margin: 0;
+  margin-bottom: .5rem;
+}
+
+.div-fluid:hover{
+  box-shadow: none;
+}
+
+
+.over-image {
+  width: 125px;
+  height: 125px;
+  margin-left: -7.75rem;
+}
+
+.img-fluid{
+  width: 100px;
+  height: 100px;
+}
+
+.priceIP {
+  margin-left: 3rem;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+  width: 0;
+  transition: all 0.1s;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  border: none;
+
+}
+
+.catHeader{
+  margin-top: -5px;
+  border-bottom: 1px solid #000000;
+  height: 3.5rem;
+  background-color: #fff;
+}
+
+
+.logo img{
+  display: none;
+}
+
+.sidebar .closebtn {
+  display: inline;
+}
+
+
+.sidebar ul p {
+    font-size: 1.3em;
+    margin-top: 0;
+}
+
+.sidebar ul li a {
+    font-size: 1.15em;
+}
+
+
+ul ul a {
+    font-size: 1em !important;
+}
+
+
+/* OVERLAY INDIVIDUAL PRODUCT*/
+.overlayIndProd {
+  left: 3%;
+  width: 94%;
+  background-color: rgba(255, 152, 63, 0.9);
+}
+
+
+/*OVERLAY ADD PRODUCT*/
+
+.overlayAddProduct {
+  left: .75rem;
+  width: 94%;
+}
+
+/* OVERLAY ADD SUCCESS*/
+
+.overlayAddSuccess{
+  width: auto;
+  left: .5rem;
+  right: .5rem;
+  bottom: 7.5%;
+}
+
+/* CHECKBOX */
+
+.containerC {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.containerC input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+
+/* Overlay Products*/
+
+}
+
+
+@media (max-width: 1000px) {
+.btnAdd {
+  margin-left: 0;
+}
+
+}
+
+
+@media (max-width: 420px) {
+.btnAdd {
+  margin-left: 0;
+}
+
+}
+
+@media (max-width: 380px) {
+.btnAdd {
+  margin-left: -.5rem;
+}
+
+}
+
+@media (max-width: 325px) {
+.btnAdd {
+  margin-left: -.85rem;
+}
+
+}
+/*============ BOOTSTRAP BREAK POINTS:
+
+Extra small (xs) devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap
+
+Small (sm) devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+Medium (md) devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+Large (lg) devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+Extra (xl) large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+
+=============*/

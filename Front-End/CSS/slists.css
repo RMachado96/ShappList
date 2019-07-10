@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,800');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+body {
+  overflow-x: hidden;
+  font-family: 'Raleway', sans-serif;
+  color: #000000;
+  background-color: #e8e8e8;
+}
+
+#nav-desktop {
+  display: inline;
+  margin-top: -.9rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: .1rem;
+  background: rgba(0, 0, 0, 0);
+  height: 3rem;
+  z-index: 2;
+}
+
+#nav-mobile{
+  display: none;
+}
+
+.rowIcons {
+  width: 12rem;
+  left: 60%;
+  z-index: 1;
+  position: fixed;
+  color: #fff;
+}
+
+.icon.active,
+.icon:hover {
+  color: #ffffff;  /*Icon Color*/
+}
+
+.icon {
+  color: #fff;
+}
+
+/* SETTINGS HEADER */
+.myLists {
+  width: 100%;
+  height: 3.5rem;
+  z-index: 0;
+  position: relative;
+}
+
+.myLists span{
+  color: #fff;
+  display: none;
+}
+
+.logo {
+  height: 3rem;
+  left: 30%;
+  z-index: 2;
+  position: fixed;
+  margin-top: -3.2rem;
+}
+
+/*MY LISTS ADD BUTTON*/
+
+.filterButton {
+  margin-top: -2.75rem;
+  margin-bottom: -.75rem;
+}
+
+.float{
+	width:50px;
+	height:50px;
+  z-index: 0;
+	background-color:#ff983f;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:25px;
+  box-shadow: 0px 0px 3px #848484;
+}
+
+.filterIcon{
+	margin-top:6px;
+}
+
+/* CONTAINER */
+
+.container {
+  background-color: white;
+  opacity: 0.95;
+  padding: 0 1rem;
+  margin-top: 2%;
+  box-shadow: 0px 0px 3px #848484;
+  width: 30%;
+  border-radius: .3rem;
+}
+
+.rowLists {
+  margin-bottom: -1.8rem;
+}
+
+
+.rowProducts {
+  margin: 1rem;
+  margin-top: 2rem;
+  width: 90%;
+  text-decoration: none;
+}
+
+.noLists p{
+  background-color: #fff;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  padding-bottom: -1rem;
+  color: #777777;
+  font-size: .9em;
+}
+
+.linkToList {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.list {
+  width:100%;
+  margin-bottom: 1rem;
+  background-color: #fff;
+  box-shadow: 0px 0px 3px #848484;
+  padding-bottom: .75rem;
+}
+
+.infoMsg{
+    padding-left:1rem;
+    padding-right:1rem;
+    color:#777777;
+    font-size:.8rem;
+    width:100%;
+    background-color:#fff;
+}
+.listName {
+  margin-top: -1.8rem;
+  white-space: normal;
+  margin-left: -1.5rem;
+}
+
+.listParticipants {
+  margin-top: -3rem;
+  margin-left: -1.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.listName p{
+  color: #000;
+  font-size: 1em;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list span{
+  color: #777777;
+  font-size: .9em;
+}
+
+.buttonEnterList {
+  font-size: 30px;
+  color: #ff983f;
+  margin-top: -.25rem;
+}
+
+
+@media (max-width: 1200px) {
+
+#nav-mobile {
+  display: inline;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: .9rem;
+  letter-spacing: .1rem;
+  background: #ff983f!important;
+  height: 3rem;
+  z-index: 1;
+  bottom: 0;
+}
+
+#nav-desktop{
+  display: none;
+}
+
+.rowIcons {
+  width: 100%;
+  z-index: 1;
+  position: fixed;
+  left: 3.6%;
+}
+
+.icon {
+  color: #fff;
+  font-size: 30px;
+  margin-left: -1.9rem;
+  position: fixed;
+  margin-top: -1rem;
+}
+
+
+/* MYLISTS HEADER */
+.myLists {
+  width: 100%;
+  z-index: 1;
+  position: fixed;
+}
+
+.myLists span{
+  color: #fff;
+  display: inline;
+}
+
+.logo {
+  display:none;
+}
+
+
+/*MY LISTS ADD BUTTON*/
+
+.float{
+	position:fixed;
+	width:50px;
+	height:50px;
+	top: 2px;
+	right: 2px;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:25px;
+  z-index:4;
+  box-shadow: none;
+}
+
+
+
+.filterIcon{
+	margin-top:6px;
+}
+
+
+/* CONTAINER */
+
+.container {
+  z-index: 0;
+  width: 100%;
+  padding: 1rem;
+  margin-top: 0;
+  padding-top: 5rem;
+  padding-bottom: 19%;
+  background-color: #e8e8e8;
+  text-decoration: none;
+  opacity: 1;
+  box-shadow: none;
+  width: 100%;
+  border-radius: 0;
+}
+
+
+
+.rowProducts {
+  margin-top: -6px;
+  width: 100%;
+  text-decoration: none;
+}
+
+.linkToList {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+
+.list {
+  width:100%;
+  padding-bottom: -1rem;
+  background-color: #fff;
+  box-shadow: none;
+}
+
+.listName {
+  margin-top: -2rem;
+  white-space: normal;
+  margin-left: -1.5rem;
+}
+
+.listParticipants {
+  margin-top: -3rem;
+  margin-left: -1.5rem;
+}
+
+.listName p{
+  color: #000;
+  font-size: 1.1em;
+  font-weight: bold;
+
+}
+
+.list span{
+  color: #777777;
+  font-size: 1em;
+}
+
+.buttonEnterList {
+  font-size: 30px;
+  color: #ff983f;
+}
+
+}
+
+
+
+/*============ BOOTSTRAP BREAK POINTS:
+
+Extra small (xs) devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap
+
+Small (sm) devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+Medium (md) devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+Large (lg) devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+Extra (xl) large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+
+=============*/

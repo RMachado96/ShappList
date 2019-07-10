@@ -1,0 +1,940 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,800');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+body {
+  overflow-x: hidden;
+  font-family: 'Raleway', sans-serif;
+  color: #000000;
+  background-color: #e8e8e8;
+}
+
+#nav-desktop {
+  display: inline;
+  margin-top: -.9rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: .1rem;
+  background: rgba(0, 0, 0, 0);
+  height: 3rem;
+  z-index: 2;
+}
+
+#nav-mobile{
+  display: none;
+}
+
+.rowIcons {
+  width: 12rem;
+  left: 60%;
+  z-index: 1;
+  position: fixed;
+  color: #fff;
+}
+
+.icon.active,
+.icon:hover {
+  color: #ffffff;  /*Icon Color*/
+}
+
+.icon {
+  color: #fff;
+}
+
+/* SETTINGS HEADER */
+.myLists {
+  width: 100%;
+  height: 3.5rem;
+  z-index: 1;
+  position: fixed;
+  margin-top: -5.8rem;
+  padding: 0;
+
+}
+
+.myLists span{
+  color: #fff;
+  display: none;
+}
+
+.logo {
+  height: 3rem;
+  left: 30%;
+  z-index: 2;
+  position: fixed;
+  margin-top: -5.6rem;
+  margin-left: .3rem;
+}
+
+
+.container {
+  background-color: white;
+  opacity: 0.95;
+  padding: 0 1rem;
+  margin-top: 5.8rem;
+  box-shadow: 0px 0px 3px #848484;
+  width: 50%;
+  border-radius: .3rem;
+  margin-bottom: 2rem;
+  padding-top:1rem;
+  z-index: 0;
+
+}
+
+.backButton{
+  display: none;
+}
+
+/* ADD PARTICIPANTS BUTTON*/
+
+.float{
+  position:fixed;
+  width:50px;
+  height:50px;
+  top: 2px;
+  right: 23%;
+  background-color:#ff983f;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  font-size:25px;
+  z-index:4;
+}
+
+.filterIcon{
+  margin-left:-3px;
+}
+
+.floatP{
+  position:fixed;
+  width:50px;
+  height:50px;
+  top: 2px;
+  right: 26%;
+  background-color:#ff983f;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  font-size:25px;
+  z-index:4;
+}
+
+/* PRODUCTS DISPLAY */
+
+.no-gutter > [class*='col-'] {
+    padding:0;
+}
+
+.no-gutter2 > [class*='col-'] {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.noProds p{
+  background-color: #fff;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  padding-bottom: 2rem;
+  color: #777777;
+  font-size: .9em;
+  display: none;
+}
+
+.category{
+  background-color: #fca55a;
+  width: 100%;
+  padding-left: .5rem;
+  padding-top: .1rem;
+  padding-bottom: .1rem;
+  font-size: 1.1rem;
+  color: #fff;
+  border-radius: .3rem;
+}
+
+.item{
+  background-color: #fff;
+  width: 100%;
+  font-size: 1rem;
+  color: #000;
+}
+
+.options {
+  margin-top: -1.5rem;
+  font-size: .8rem;
+}
+
+.optionsIcon {
+  margin-top: -7px;
+  margin-left: -13px;
+  margin-bottom: -2px;
+  font-size:30px;
+}
+
+.listNameContainer {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.deleteIcon {
+  color: #ff0000;
+  padding-left: 4px;
+  display: inline;
+}
+
+.quantity {
+  color:#000;
+  font-size: 1rem;
+}
+
+.btnIcon{
+  width:30px;
+  height:30px;
+  background-color:#fff;
+  color:#fca55a;
+  border-radius:50px;
+
+}
+
+.btnIconDelete{
+  width:30px;
+  height:30px;
+  background-color:#fff;
+  color:#fca55a;
+  border-radius:50px;
+  display: inline;
+}
+
+.no-gutter2 {
+  margin-top:.25rem;
+}
+
+.buttonCalc {
+  width: 100%;
+  padding: .5rem;
+  padding-top: 1rem;
+  background-color: #fff;
+
+}
+
+.btnCalc {
+  background-color: #cc2006;
+  color: white;
+  border-radius: .3rem;
+  margin-top: -1rem;
+  margin-bottom: .7rem;
+  font-size: .9rem;
+}
+
+
+/*OVERLAY ADD PRODUCT*/
+
+.overlay {
+  display: none;
+  position: fixed;
+  z-index: 12;
+  top: 10%;
+  right: .90rem;
+  left: 37.5%;
+  width: 25%;
+  background-color: rgba(255, 152, 63, 0.9);
+  border-radius:10px;
+}
+
+.overlay-content {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+
+
+.overlayTitle {
+  padding: .5rem;
+  text-decoration: none;
+  font-size: 20px;
+  color: #ffffff;
+  margin-top: -1rem;
+  margin-bottom: -1rem;
+}
+
+.lists {
+  margin-bottom: -.8rem;
+}
+
+.makeListActive {
+    display:none;
+}
+
+.overlaySuper{
+  padding: .5rem;
+  margin-bottom: -1rem;
+  text-decoration: none;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.overlayRef {
+  padding: .5rem;
+  text-decoration: none;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.viewMode{
+  margin-top: -.5rem;
+  background-color: #fff;
+  width: 98%;
+  color: #ff983f;
+  border-radius: .3rem;
+  margin-bottom: 1rem;
+}
+
+.delList{
+  margin-top: -1.5rem;
+  background-color: #ff0000;
+  width: 98%;
+  color: #fff;
+  border-radius: .3rem;
+  margin-bottom: 1rem;
+}
+
+.addProdToList {
+  background-color: #fff;
+  width: 80%;
+  color: #ff983f;
+  border-radius: .3rem;
+  margin-top: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.overlayRef:hover, .overlayRef:focus {
+  color: #f1f1f1;
+  text-decoration: none;
+}
+
+.closebtnAP {
+  margin-top: -3.4rem;
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+
+/* OVERLAY PARTICIPANTS*/
+
+.overlayPart {
+  display: none;
+  position: fixed;
+  z-index: 12;
+  top: 10%;
+  right: .90rem;
+  left: 37.5%;
+  width: 25%;
+  height: 100%;
+  background-color: rgba(255, 152, 63, 0.9);
+  border-radius:5px;
+  text-decoration: none;
+}
+
+.btnIconPart{
+  width:30px;
+  height:30px;
+  border-radius:50px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.deleteIconPart {
+  color: #fff;
+  padding-left: 4px;
+  display: inline;
+}
+
+.openPart{
+  background-color: #fff;
+  width: 80%;
+  color: #ff983f;
+  border-radius: .3rem;
+  margin-top: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.overlaySubTitle{
+  font-weight: bold;
+  padding: .5rem;
+  margin-bottom: -1rem;
+  margin-top: -.5rem;
+  text-decoration: none;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.pend{
+  margin-top: 1rem;
+}
+
+/* OVERLAY ADD PARTICIPANTS */
+.overlayAddPart {
+  display: none;
+  position: fixed;
+  z-index: 15;
+  width: 25%;
+  left: 37.5%;
+  top: 10%;
+  height: 15rem;
+  background-color: #e8e8e8;
+  border-radius: 5px;
+}
+
+.listAddPart {
+  margin-bottom: -.8rem;
+}
+
+.listAddPart a {
+  padding: .5rem;
+  text-decoration: none;
+  font-size: 20px;
+  color: #000;
+  display: block;
+  transition: 0.3s;
+  font-size: 1rem;
+}
+
+.participantsHeader{
+  background-color: #ff983f;
+  height: 3.5rem;
+  margin-top: -5px;
+  border-bottom: 1px solid #000000;
+  color: #ffffff;
+  font-size: 1.25rem;
+}
+
+.form-control {
+  width: 90%;
+  margin-bottom: -1rem;
+  margin-top: 1rem;
+}
+
+.errorDiv{
+    margin-top:-1rem;
+}
+
+.errorMsg {
+  padding-top: .5rem;
+  color: #ff0000;
+  font-size: .9rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+  /*display: none;*/
+}
+
+.overlayAddPart .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 50px;
+  margin-left: 50px;
+  margin-top: -8px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.addPart{
+  background-color: #ff983f;
+  width: 80%;
+  color: #fff;
+  border-radius: .3rem;
+  margin-top: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+/* CHECKBOX */
+
+.containerC {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 25px;
+  height: 10px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.containerC input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #fff;
+}
+
+/* When the checkbox is checked, add a blue background */
+.containerC input:checked ~ .checkmark {
+  background-color: #fff;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.containerC input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.containerC .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 6px;
+  height: 13px;
+  border: solid #ff983f; /* CHECK COLOR */
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.modeShop{
+  display: none;
+}
+
+.modeList{
+  display: inline;
+}
+
+.container2C {
+  display: inline;
+  position: relative;
+  padding-right: 1rem;
+  top: -.5rem;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container2C input {
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #ff983f;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container2C input:checked ~ .checkmark2 {
+  background-color: #ff983f;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark2:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container2C input:checked ~ .checkmark2:after {
+  display: inline;
+}
+
+/* Style the checkmark/indicator */
+.container2C .checkmark2:after {
+  left: 9px;
+  top: 5px;
+  width: 6px;
+  height: 13px;
+  border: solid #fff; /* CHECK COLOR */
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+
+/* Overlay Products*/
+
+.anti-overlay{
+  display: none;
+  position: fixed;
+  margin-top: -2.3rem;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* OVERLAY DELETE PRODUCT */
+
+.overlayDelProd{
+  display: none;
+  position: fixed;
+  padding-top: -2rem;
+  z-index: 12;
+  bottom: 3.5rem;
+  left: 5%;
+  width: 90%;
+  background-color: rgba(255, 152, 63, 0.9);
+  border-radius:10px;
+  margin-top:-.5rem;
+}
+
+.remProd {
+  background-color: #fff;
+  width:100%;
+  color: #ff983f;
+  border-radius: .3rem;
+  margin-top:-.25rem;
+  margin-bottom:-.25rem;
+}
+
+.products {
+  margin-top: -6px;
+  padding-bottom: -1rem;
+  text-decoration: none;
+  background-color: #fff;
+  border-radius: .3rem;
+}
+
+/* RESULTS */
+
+.results{
+  background-color: #fff;
+  margin-bottom: 1rem;
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+  width: 100%;
+  padding-bottom: -1rem;
+
+
+}
+
+.colSuper{
+  background-color: #fca55a;
+  border: solid 1px #fff;
+  border-radius: 5px;
+  padding-bottom: -2rem;
+
+}
+
+.superName{
+  margin-top: -.8rem;
+  margin-bottom: -1rem;
+  font-size: 1rem;
+}
+
+.resultsValues{
+  background-color: #fff;
+  margin-top: -.9rem;
+  color: #000;
+  font-size: .9em;
+  text-align: center;
+  width: 100%;
+}
+
+.superValue{
+  margin-top: -.8rem;
+  margin-bottom: -1rem;
+}
+
+.pSuperValue{
+  font-size: 1rem;
+}
+
+.bestSuper p{
+  background-color: #fff;
+  margin-bottom: 1rem;
+  margin-top: -1rem;
+  padding: 1rem;
+  padding-bottom: -1rem;
+  color: #000;
+  font-size: .9rem;
+}
+
+@media (max-width: 1200px) {
+
+  #nav-mobile {
+    display: inline;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: .9rem;
+    letter-spacing: .1rem;
+    background: #ff983f!important;
+    height: 3rem;
+    z-index: 1;
+    bottom: 0;
+  }
+
+  #nav-desktop{
+    display: none;
+  }
+
+  .rowIcons {
+    width: 100%;
+    z-index: 1;
+    position: fixed;
+    left: 3.6%;
+  }
+
+  .icon {
+    color: #fff;
+    font-size: 30px;
+    margin-left: -1.9rem;
+    position: fixed;
+    margin-top: -1rem;
+  }
+
+
+
+  /* MY LISTS HEADER*/
+  .myLists {
+    width: 100%;
+    height: 3.5rem;
+    z-index: 1;
+    position: fixed;
+    margin-top: 0;
+    padding: 0;
+  }
+
+  .myLists span{
+    color: #fff;
+    display: inline;
+    margin-left: 1.5rem;
+  }
+
+  .logo {
+    display:none;
+  }
+
+
+  /* CONTAINER */
+
+  .container {
+   z-index: 0;
+    width: 100%;
+    padding: 1rem;
+    margin-top: 0;
+    padding-top: 5rem;
+    padding-bottom: 19%;
+    background-color: #e8e8e8;
+    text-decoration: none;
+    opacity: 1;
+    box-shadow: none;
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+
+
+
+  .noProds p{
+    padding-bottom: 1rem;
+  }
+
+  /* BACK PAGE BUTTON*/
+
+  .backButton{
+  	position:fixed;
+  	width:20px;
+  	height:40px;
+  	top: 0.6%;
+  	left: 1%;
+  	background-color:#ff983f;
+  	color:#FFF;
+  	text-align:center;
+    font-size:20px;
+    z-index:4;
+    display: inline;
+  }
+
+  .backIcon{
+  	margin-left:-4px;
+  }
+
+  /* ADD PARTICIPANTS BUTTON*/
+
+  .float{
+  	position:fixed;
+  	width:50px;
+  	height:50px;
+  	top: 2px;
+  	left: 85%;
+  	color:#FFF;
+  	border-radius:50px;
+  	text-align:center;
+    font-size:25px;
+    z-index:4;
+  }
+
+  .filterIcon{
+  	margin-top:6px;
+  }
+
+  .floatP{
+    left: 70%;
+  }
+
+
+/* PRODUCTS DISPLAY */
+
+.no-gutter > [class*='col-'] {
+    padding:0;
+}
+
+.no-gutter2 > [class*='col-'] {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.category{
+  background-color: #fca55a;
+  width: 100%;
+  padding-left: .5rem;
+  padding-top: .1rem;
+  padding-bottom: .1rem;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.item{
+  background-color: #fff;
+  width: 100%;
+  font-size: 1rem;
+  color: #000;
+  margin-top: -.4rem;
+}
+
+.deleteIcon {
+  color: #ff0000;
+  padding-left: 2px;
+  display: none;
+}
+
+.quantity {
+  color:#000;
+  font-size: .8rem;
+}
+
+.btnIcon{
+  width:30px;
+  height:30px;
+  background-color:#fff;
+  color:#fca55a;
+  border-radius:50px;
+}
+
+.btnIconDelete{
+  display:none;
+
+}
+
+.anti-overlay{
+  margin-top: 0;
+
+}
+
+
+/*OVERLAY ADD PRODUCT*/
+
+.overlay {
+    left: .75rem;
+    width: 94%;
+  }
+
+
+  /*OVERLAY ADD PRODUCT*/
+
+.overlayPart {
+    left: .75rem;
+    width: 94%;
+  }
+
+.superName{
+    margin-top: -.65rem;
+    margin-bottom: -.7rem;
+    font-size: .8rem;
+  }
+
+  .overlayAddPart {
+    left: .75rem;
+    width: 94%;
+  }
+
+
+}
+
+@media (max-width: 1800px) {
+
+  .float{
+    right:19%;
+  }
+
+  .floatP{
+    right:23%;
+  }
+}
+
+@media (max-width: 1350px) {
+
+  .float{
+    right:15%;
+  }
+
+  .floatP{
+    right:20%;
+  }
+}
+
+/*============ BOOTSTRAP BREAK POINTS:
+
+Extra small (xs) devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap
+
+Small (sm) devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+Medium (md) devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+Large (lg) devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+Extra (xl) large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+
+=============*/

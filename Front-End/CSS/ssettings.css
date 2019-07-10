@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,800');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+body {
+  overflow-x: hidden;
+  font-family: 'Raleway', sans-serif;
+  color: #000000;
+  background-color: #e8e8e8;
+
+}
+
+#nav-desktop {
+  display: inline;
+  margin-top: -.9rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: .1rem;
+  background: rgba(0, 0, 0, 0);
+  height: 3rem;
+  z-index: 2;
+}
+
+#nav-mobile{
+  display: none;
+}
+
+
+.rowIcons {
+  width: 12rem;
+  left: 60%;
+  z-index: 1;
+  position: fixed;
+  color: #fff;
+}
+
+.icon.active,
+.icon:hover {
+  color: #ffffff;  /*Icon Color*/
+}
+
+.icon {
+  color: #fff;
+}
+
+/* SETTINGS HEADER */
+.mySettings {
+   width: 100%;
+  height: 3.5rem;
+  z-index: 1;
+  position: fixed;
+  margin-top: -5.8rem;
+  padding: 0;
+}
+
+.mySettings span{
+  color: #fff;
+  display: none;
+}
+
+.logo {
+  height: 3rem;
+  left: 30%;
+  z-index: 2;
+  position: fixed;
+  margin-top: -5.6rem;
+
+}
+
+/* SETTINGS EDIT ACCOUNT */
+
+.filterButton {
+  margin-top: -1rem;
+  margin-bottom: .5rem;
+}
+
+.float{
+  display: inline;
+	width:50px;
+	height:50px;
+  z-index: 0;
+	background-color:#ff983f;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:25px;
+  box-shadow: 0px 0px 3px #848484;
+}
+
+.float2{
+  display: none;
+}
+
+.filterIcon{
+	margin-top:6px;
+}
+
+/* CONTAINER */
+
+.container {
+  background-color: white;
+  opacity: 0.95;
+  padding: 0 1rem;
+  box-shadow: 0px 0px 3px #848484;
+  width: 30%;
+  border-radius: .3rem;
+  margin-top: 5.8rem;
+  z-index: 0;
+}
+
+.groupSettings {
+  margin-bottom: .75rem;
+  margin-top: .75rem;
+}
+
+.columnAtribute {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  background-color: #fff;
+  font-size: 18px;
+  color: #000;
+}
+
+.columnAtribute p {
+  color: #777777;
+  font-size: .8rem;
+  margin-left: .3rem;
+  margin-bottom: -.1rem;
+  font-weight: bold;
+}
+
+.columnAtribute span{
+  color: #777777;
+  font-size: 0.8em;
+  margin-left: .3rem;
+}
+
+.supress {
+  margin-top: -1rem;
+}
+
+.buttonLogOut {
+  margin: .5rem;
+  width: auto;
+}
+
+.logOut {
+  background-color: #cc2006;
+  color: white;
+  border-radius: .3rem;
+  margin-top: -1rem;
+}
+
+.lgD {
+  box-shadow: 0px 0px 3px #848484;
+  display: inline;
+}
+
+.lgM {
+  display: none;
+}
+
+.invitesContainer{
+  margin-top: 1rem;
+}
+
+.columnInvite{
+  margin-bottom:-1rem;
+}
+
+.iconInvite{
+  margin-top: -.5rem;
+  margin-bottom: -1.5rem;
+  font-size: 1.5rem;
+}
+
+.iconAccept{
+  color: #04b004;
+}
+
+.iconRefuse{
+  color: #ff0000;
+}
+
+
+@media (max-width: 1200px) {
+
+#nav-mobile {
+  display: inline;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: .9rem;
+  letter-spacing: .1rem;
+  background: #ff983f!important;
+  height: 3rem;
+  z-index: 1;
+  bottom: 0;
+}
+
+#nav-desktop{
+  display: none;
+}
+
+
+
+.rowIcons {
+  width: 100%;
+  z-index: 1;
+  position: fixed;
+  left: 3.6%;
+}
+
+.icon {
+  color: #fff;
+  font-size: 30px;
+  margin-left: -1.9rem;
+  position: fixed;
+  margin-top: -1rem;
+}
+
+/* SETTINGS HEADER */
+.mySettings {
+  width: 100%;
+    height: 3.5rem;
+    z-index: 1;
+    position: fixed;
+    margin-top: 0;
+    padding: 0;
+}
+
+.mySettings span{
+  color: #fff;
+  display: inline;
+}
+
+.logo {
+  display:none;
+
+}
+/* SETTINGS EDIT ACCOUNT */
+
+
+
+.float2{
+  display: inline;
+  position: absolute;
+	width:50px;
+	height:50px;
+	top: 2px;
+	right: 2px;
+	background-color: #ff983f;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:25px;
+  z-index:4;
+  box-shadow: none;
+}
+
+.float {
+  display:none;
+}
+
+.filterIcon{
+	margin-top:6px;
+}
+
+
+/* CONTAINER */
+
+.container {
+  width: 100%!important;
+  padding: 1rem!important;
+  padding-top: 4rem!important;
+  background-color: rgba(0, 0, 0, 0);
+  text-decoration: none;
+  box-shadow: none!important;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.columnAtribute {
+  margin-top: 10px;
+  text-decoration: none;
+  background-color: #fff;
+  font-size: 18px;
+  color: #000;
+}
+
+
+.columnAtribute p {
+  color: #777777;
+  font-size: .8rem;
+  margin-left: .3rem;
+  margin-bottom: -.1rem;
+  font-weight: bold;
+}
+
+.columnAtribute span{
+  color: #777777;
+  font-size: .8em;
+  margin-left: .3rem;
+}
+
+
+.buttonLogOut {
+  margin: 1rem;
+  margin-top: .5rem;
+}
+
+.logOut {
+  background-color: #cc2006;
+  width: 100%;
+  color: white;
+  border-radius: .3rem;
+  margin-top: -.5rem;
+}
+
+.lgD {
+  display: none;
+}
+
+.lgM {
+  display: inline;
+}
+
+.invitesContainer{
+  margin-top: -8.5rem;
+}
+
+
+
+
+
+}
+
+
+
+
+
+/*============ BOOTSTRAP BREAK POINTS:
+
+Extra small (xs) devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap
+
+Small (sm) devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+Medium (md) devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+Large (lg) devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+Extra (xl) large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+
+=============*/
