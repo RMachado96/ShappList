@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<title>ShappList</title>
+  	{% load static %}
+	<link rel="stylesheet" href="{% static 'ShappList/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'ShappList/css/slists.css' %}">
+	<link rel="stylesheet" href="{% static 'ShappList/css/fixed.css' %}">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+  </head>
+
+  <body data-spy="scroll" onload="ajaxGetUserID()">
+
+   <!-- Page Content  -->
+      <div id="content">
+
+          <nav id="nav-mobile" class="navbar fixed-bottom">
+            <div class="row rowIcons">
+              <div class="col-4 text-center">
+                <a href="lists"><i class="icon fas fa-list-alt fa-3x" ></i></a>
+              </div>
+              <div class="col-4 text-center">
+                  <a href="products"><i class="icon fas fa-shopping-bag fa-3x" ></i></a>
+              </div>
+              <div class="col-4 text-center">
+                  <a href="settings"><i class="icon fas fa-user-circle fa-3x" ></i></a>
+              </div>
+            </div> <!--- End Row -->
+        </nav><!--- End Navigation --->
+
+        <nav id="nav-desktop" class="navbar fixed-top">
+            <div class="row rowIcons">
+              <div class="col-4 text-center">
+                <a href="lists"><i class="icon fas fa-list-alt" ></i></a>
+              </div>
+              <div class="col-4 text-center">
+                  <a href="products"><i class="icon fas fa-shopping-bag" ></i></a>
+              </div>
+              <div class="col-4 text-center">
+                  <a href="settings"><i class="icon fas fa-user-circle" ></i></a>
+              </div>
+            </div> <!--- End Row -->
+        </nav><!--- End Navigation --->
+
+          <!-- MY LISTS HEADER -->
+
+
+          <div class="row myLists" style="background: #ff983f!important;">
+            <div class="col-12">
+              <span>As Minhas Listas</span>
+            </div>
+          </div>
+
+          <a  href="#"><img class="logo" src="{% static 'ShappList/resources/logo-white.png' %}"></a>
+
+
+          <!-- MY LISTS -->
+          <div class="container d-flex justify-content-center" >
+            <div class="row rowProducts justify-content-center align-items-center" id="subListContainer">
+
+
+            </div>
+          </div>
+
+
+
+      </div>
+
+
+    <script type="text/javascript" language="javascript">
+      var counter = 0;
+      var sideOpen = 0;
+
+      var localUserID;
+      var allListsID = [];
+
+      function buttonFilter() {
+        if (counter == 0) {
+          document.getElementById("myNav").style.display = "block";
+          document.getElementById("cover").style.display = "block";
+          counter = 1;
+        }
+        else {
+          document.getElementById("myNav").style.display = "none";
+          document.getElementById("cover").style.display = "none";
+          counter = 0;
+        }
+      }
+
+      function closeNav() {
+        document.getElementById("myNav").style.display = "none";
+        document.getElementById("cover").style.display = "none";
+        counter = 0;
+      }
+
+      function sidebar(){
+        if (sideOpen == 0) {
+          document.getElementById("sidebarCollapse").style.width = "auto";
+          document.getElementById("spanCat").style.display = "none";
+          sideOpen = 1;
+        }
+        else {
+
+          document.getElementById("spanCat").style.display = "inline";
+          document.getElementById("sidebarCollapse").style.width = "auto";
+          sideOpen = 0;
+        }
+      }
+
+    function ajaxGetUserID(){
+        temp_cookie = document.cookie
+        if(temp_cookie == ""){
+            window.location.replace("/login");
+        }
+          console.log('Creating ajax object');
+                var ajaxRequest = new XMLHttpRequest();
+                ajaxRequest.onreadystatechange = function() {
+                    if (ajaxRequest.readyState == 4) {   // XMLHttpRequest.DONE == 4
+                        if (ajaxRequest.status == 200) {
+
+                            var responseData = JSON.parse(ajaxRequest.responseText);
+                            localUserID(responseData);
+                            ajaxGetUserLists();
+                        }
+                        else if (ajaxRequest.status == 400) {
+                            console.log('There was an error 400');
+                        }
+                        else {
+                            console.log('something else other than 200 was returned');
+                        }
+                    }
+                };
+                console.log('Sending ajax');
+                ajaxRequest.open("POST", "https://shapplist.pythonanywhere.com/api/listServices/api_getUserID", true);
+                ajaxRequest.setRequestHeader("content-type", "application/json; charset=utf-8");
+                ajaxRequest.send();
+        }
+
+        function localUserID(responseData){
+          localUserID = responseData['userID'];
+    }
+
+    function ajaxGetUserLists(){
+            console.log('Requesting all user lists...');
+                var ajaxRequest = new XMLHttpRequest();
+                ajaxRequest.onreadystatechange = function() {
+                    if (ajaxRequest.readyState == 4) {   // XMLHttpRequest.DONE == 4
+                        if (ajaxRequest.status == 200) {
+                            console.log('Lists received!');
+
+                            var responseData = JSON.parse(ajaxRequest.responseText);
+                            writeLists(responseData)
+                        }
+                        else if (ajaxRequest.status == 400) {
+                            console.log('There was an error 400');
+                        }
+                        else {
+                            console.log('something else other than 200 was returned');
+                        }
+                    }
+                };
+                console.log('Sending ajax');
+                ajaxRequest.open("POST", "https://shapplist.pythonanywhere.com/api/listServices/api_getAllLists", true);
+                ajaxRequest.setRequestHeader("content-type", "application/json; charset=utf-8");
+
+                ajaxRequest.send();
+    }
+
+    function writeLists(responseData){
+            var totalItems = responseData['listCount'];
+
+
+                var owners = [];
+                var infoMessageHTML = `<p class="infoMsg text-left">A lista delineada a verde é a sua lista ativa!</p>`
+                var buttonHTML = ` <!-- ADD LIST BUTTON -->
+                    <a class="linkToList" href="individualList">
+                    <div class="row ">
+                      <div class="col-12 filterButton">
+                        <div class="" id="addLists">
+                            <a href="add_list" >
+                              <button class="btn float" type="button">
+                                  <i class="fas fa-plus filterIcon"></i>
+                            	</button>
+                            </a>
+                        </div>
+                      </div>
+                    </div>
+                  </a>`
+
+
+             if(totalItems == 0){
+                    noListHtml = `<div id="noLists" class="noLists text-left">
+                    <p>Não tem qualquer lista criada. Adicione <a href="add_list">aqui</a> uma nova lista!</p>
+                  </div>`;
+
+                  document.getElementById("subListContainer").innerHTML = noListHtml + buttonHTML;
+             }
+
+             else{
+
+                var finalHTML = '';
+                for(i = 0; i < totalItems; i++){
+                    allListsID.push(responseData['lists']['list' + i.toString()]['listId']);
+
+
+                    var tempName = responseData['lists']['list' + i.toString()]['listName'];
+
+                    if(responseData['listParticipants']['list' + i.toString()]['isOwner']){
+                        owners.push(responseData['lists']['list' + i.toString()]['listId']);
+                        tempName = "★ " + tempName;
+                    }
+
+
+
+                    var tempHTML = `<a id="listBox`+responseData['lists']['list' + i.toString()]['listId'].toString()+`" class="linkToList" href="individual_list" onclick="changeSessionList(` + responseData['lists']['list' + i.toString()]['listId'].toString() + `)">
+                    <button id = "listButton`+responseData['lists']['list' + i.toString()]['listId'].toString()+`" class="list btn text-left">
+                      <div class="row rowLists">
+                        <div class="col-10 ">
+                          <div class="row ">
+                            <div class="col-12 listName">
+                              <p>` + tempName + `</p>
+                            </div>
+                            <div class="col-12 listParticipants">
+                              <span> ` + fillUsers(responseData['listParticipants']['list' + i.toString()]['participants'])+`</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-2 text-right">
+                          <i class="fas fa-angle-right buttonEnterList"></i>
+                        </div>
+                      </div>
+                    </button>
+                  </a>`;
+                    finalHTML = finalHTML + '\n' + tempHTML;
+                }
+                document.getElementById("subListContainer").innerHTML = infoMessageHTML + finalHTML + buttonHTML;
+            }
+            localStorage.setItem("allLists",allListsID);
+
+            if(localStorage.activeList == 0 && allListsID.length > 0){
+                localStorage.setItem("activeList",allListsID[0]);
+            }
+            if(localStorage.activeList != 0){
+                temp_id = localStorage.activeList;
+                document.getElementById("listButton" + temp_id.toString()).style.border = "solid 2px #94ffb4";
+            }
+
+    }
+
+    function fillUsers(data){
+        var tempString = '';
+
+        if(data.length <= 5){
+            for(l = 0; l<data.length; l++){
+                if(l != 0){
+                    tempString += ','
+                }
+                tempString += data[l]
+
+            }
+        }
+        else{
+            for(j = 0; j<5 ; j++){
+                if(j != 0){
+                    tempString += ','
+                }
+                tempString += data[j]
+            }
+        }
+
+        return tempString;
+    }
+
+    function changeSessionList(listID){
+        sessionStorage.setItem("newPageList", listID.toString());
+        return true;
+    }
+
+    </script>
+
+    <!--- Script Source Files -->
+    <script src="{% static 'ShappList/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'ShappList/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
+    <!--- End of Script Source Files -->
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+
+  </body>
+</html>

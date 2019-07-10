@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ShappList</title>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'ShappList/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'ShappList/css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'ShappList/css/fixed.css' %}">
+</head>
+
+<body data-spy="scroll" data-target="#navbarResponsive">
+
+<!--- Start Home Section -->
+<div id="home">
+
+	<!--- Navigation --->
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+		<a class="navbar-brand" href="index"><img src="{% static 'ShappList/resources/logo.png' %}"></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a class="nav-link" href="#home">Início</a></li>
+				<li class="nav-item"><a class="nav-link" href="#features">Características</a></li>
+				<li class="nav-item"><a class="nav-link" href="#howto">Guia</a></li>
+				<li class="nav-item"><a class="nav-link" href="#aboutus">Sobre Nós</a></li>
+				<li class="nav-item"><a class="nav-link" href="#contact">Contactos</a></li>
+			</ul>
+		</div>
+		<a class="btn btn-outline-light btn-login" href="login">LOGIN</a>
+
+	</nav><!--- End Navigation --->
+
+<!--- Start Landing Page Section --->
+<div class="landing">
+	<div class="home-wrap">
+		<div class="home-inner" >
+		</div>
+	</div>
+</div>
+
+<div class="caption text-center">
+	<h1>BEM-VINDO À SHAPPLIST</h1>
+	<h3>A nova forma de fazer compras!</h3>
+	<a class="btn btn-outline-light btn-lg" href="#howto">Começar Já</a>
+
+</div><!--- End Landing Page Section -->
+</div>
+
+<!--- End Home Section -->
+
+<!--- Start Features Section -->
+<div id="features" class="offset">
+	<div class="col-12 narrow text-center">
+		<h1>É hora de largar o papel e a caneta!</h1>
+		<p class="lead"> Aplicação que lhe permite criar listas de compras e partilhá-las com os seus contactos, visualizar produtos dos principais supermercados como o Pingo Doce, Continente e Jumbo, produtos com desconto e muito mais!</p>
+		<!--<a class="btn btn-secondary btn-md" href="#" target="_blank">BUTTON</a>-->
+	</div>
+</div>
+
+<!--- Start Jumbotron -->
+<div class="jumbotron">
+	<div class="narrow text-center">
+		<div class="col-12">
+			<h3 class="heading">Características</h3>
+			<div class="heading-underline"></div>
+		</div>
+		<div class="row text-center">
+			<div class="col-md-4">
+				<div class="feature">
+					<i class="fas fa-mobile-alt fa-4x" data-fa-transform="shrink-4.5 up-4.5"></i>
+					<h3>Multi-plataforma</h3>
+					<p>A ShappList está disponível à distância de um clique no seu Computador, Tablet ou Telemóvel!</p>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="feature">
+					<i class="fas fa-shopping-cart fa-4x" data-fa-transform="shrink-4.5 up-4.5"></i>
+					<h3>Listas de supermercado</h3>
+					<p>Crie as suas listas de supermercado e nunca mais terá de usar papel e caneta!</p>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="feature">
+					<i class="fas fa-users fa-4x" data-fa-transform="shrink-4 up-5"></i>
+					<h3>Partilhe as suas Listas</h3>
+					<p>Depois de criadas as listas, pode partilhá-las com os seus amigos e familiares!</p>
+				</div>
+			</div>
+		</div> <!--- End Row -->
+	</div>
+</div> <!--- End Jumbotron -->
+
+<!--- End Features Section -->
+
+<!--- Start HowTo Section -->
+<div id="howto" class="offset">
+
+	<div class="fixed-background">
+
+		<div class="row dark text-center">
+			<div class="col-12">
+				<h3 class="heading">Guia</h3>
+				<div class="heading-underline"></div>
+			</div>
+
+			<div class="col-md-4">
+				<h3>Primeiro Passo</h3>
+				<div class="feature">
+					<i class="fas fa-battery-quarter fa-3x"></i>
+					<p class="lead">Faça o registo na ShappList!</p>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<h3>Segundo Passo</h3>
+				<div class="feature">
+					<i class="fas fa-battery-half fa-3x"></i>
+					<p class="lead">Crie a sua lista e adicione todos os produtos que precisa!</p>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<h3>Terceiro Passo</h3>
+				<div class="feature">
+					<i class="fas fa-battery-three-quarters fa-3x"></i>
+					<p class="lead">Partilhe a sua lista com os seus contactos e disfrute da ShappList!</p>
+				</div>
+			</div>
+		</div> <!--- End Row Dark -->
+
+		<div class="fixed-wrap">
+			<div class="fixed">
+			</div>
+		</div>
+	</div> <!--- End Fixed background -->
+
+</div>
+<!--- End Howto Section -->
+
+<!--- Start AboutUs Section -->
+<div id="aboutus" class="offset">
+
+	<!--- Start Jumbotron -->
+	<div class="jumbotron">
+		<div class="col-12 text-center">
+			<h3 class="heading">Sobre Nós</h3>
+			<div class="heading-underline"></div>
+		</div>
+		<div class="col-12 narrow text-center">
+			<p class="lead"> "A ShappList surgiu para colmatar uma necessidade que nenhuma outra aplicação tinha conseguido fazer. Desde aí, foram surgindo cada vez mais ideias para a tornar uma aplicação sólida e numa ferramenta para o dia-a-dia de todos os seus utilizadores. A ShappList quer crescer e continuar a alcançar cada vez mais pessoas!" </p>
+		</div>
+
+	</div> <!--- End Jumbotron -->
+</div>
+<!--- End AboutUs Section -->
+
+<!--- Start Contact Section -->
+<div id="contact" class="offset">
+
+	<footer>
+		<div class="row justify-content-center">
+
+			<div class="col-md-8 text-center">
+				<img src="{% static 'ShappList/resources/logo.png' %}">
+				<p>Contacte-nos para mais informações ou para reportar algo!</p>
+				<strong>Informação de Contacto</strong>
+				<p>shapplist@outlook.pt</p>
+				<a href="#" ><i class="fab fa-facebook-square"></i></a>
+				<a href="#" ><i class="fab fa-twitter-square"></i></a>
+				<a href="#" ><i class="fab fa-instagram"></i></a>
+			</div>
+
+			<hr class="socket">
+			&copy; ShappList.
+
+		</div>
+	</footer>
+
+</div>
+<!--- End Contact Section -->
+
+<!--- Script Source Files -->
+<script src="{% static 'ShappList/js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'ShappList/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
+<!--- End of Script Source Files -->
+
+</body>
+</html>

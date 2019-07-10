@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<title>ShappList</title>
+  	{% load static %}
+	<link rel="stylesheet" href="{% static 'ShappList/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'ShappList/css/saddlist.css' %}">
+	<link rel="stylesheet" href="{% static 'ShappList/css/fixed.css' %}">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+  </head>
+
+  <body data-spy="scroll" >
+
+        <!-- Page Content  -->
+      <div id="content">
+
+          <nav id="nav-mobile" class="navbar fixed-bottom">
+              <div class="row rowIcons">
+                <div class="col-4 text-center">
+                  <a href="lists"><i class="icon fas fa-list-alt fa-3x" ></i></a>
+                </div>
+                <div class="col-4 text-center">
+                    <a href="products"><i class="icon fas fa-shopping-bag fa-3x" ></i></a>
+                </div>
+                <div class="col-4 text-center">
+                    <a href="settings"><i class="icon fas fa-user-circle fa-3x" ></i></a>
+                </div>
+              </div> <!--- End Row -->
+          </nav><!--- End Navigation --->
+
+          <nav id="nav-desktop" class="navbar fixed-top">
+            <div class="row rowIcons">
+              <div class="col-4 text-center">
+                <a href="lists"><i class="icon fas fa-list-alt" ></i></a>
+              </div>
+              <div class="col-4 text-center">
+                  <a href="products"><i class="icon fas fa-shopping-bag" ></i></a>
+              </div>
+              <div class="col-4 text-center">
+                  <a href="settings"><i class="icon fas fa-user-circle" ></i></a>
+              </div>
+            </div> <!--- End Row -->
+        </nav><!--- End Navigation --->
+
+          <!-- MY LISTS HEADER -->
+          <div class="" id="filters">
+              <a href="lists" >
+                <button class="btn backButton" type="button">
+                    <i class="fas fa-chevron-left backIcon"></i>
+              	</button>
+              </a>
+          </div>
+
+          <div class="row myLists" style="background: #ff983f!important;">
+            <div class="col-12">
+              <span>Adicionar Nova Lista</span>
+            </div>
+          </div>
+
+          <a  href="#"><img class="logo" src="{% static 'ShappList/resources/logo-white.png' %}"></a>
+
+             <!-- MY LISTS -->
+          <div class="container d-flex justify-content-center text-center" >
+            <div class="row rowProducts d-flex justify-content-center  ">
+
+
+              <div class="col-12 form-login">
+                <div class="form-group d-flex justify-content-center text-center">
+                  <input type="text" id="listName" class="form-control" placeholder="Nome da Lista">
+                </div>
+
+                <div id="errorMsgListName" class="text-left"></div>
+
+                <button id="createListButton" onclick = "createList()" class="addList btn">Criar Lista</button>
+              </div>
+
+          </div>
+
+      </div>
+    </div>
+
+
+    <script type="text/javascript" language="javascript">
+      var overlay = 0;
+
+      function createList(){
+          document.getElementById("createListButton").disabled = true;
+          listName = document.getElementById("listName").value;
+          if(listName != ''){
+            if(listName[0].match("^[A-z0-9]+$")){
+                sendAjaxCreateList(listName);
+            }
+            else{
+                document.getElementById("errorMsgListName").innerHTML = "Nome contém caracteres inválidos!";
+                document.getElementById("errorMsgListName").style.display = "block";
+            }
+          }
+          else{
+              document.getElementById("errorMsgListName").innerHTML = "Lista precisa de um nome!";
+              document.getElementById("errorMsgListName").style.display = "block";
+          }
+      }
+
+      function sendAjaxCreateList(listName){
+        console.log('Creating ajax object');
+                var ajaxRequest = new XMLHttpRequest();
+
+                ajaxRequest.onreadystatechange = function() {
+                    if (ajaxRequest.readyState == 4) {   // XMLHttpRequest.DONE == 4
+                        if (ajaxRequest.status == 200) {
+
+                            var responseData = JSON.parse(ajaxRequest.responseText);
+                            var flag = responseData['updatedDefaultList'];
+                            if(flag){
+
+                                localStorage.setItem("activeList", responseData['defaultList'].toString());
+
+                            }
+
+                            window.location.replace("/lists");
+
+
+                        }
+                        else if (ajaxRequest.status == 400) {
+                            console.log('There was an error 400');
+                        }
+                        else {
+                            console.log('something else other than 200 was returned');
+                        }
+                    }
+                };
+                console.log('Sending ajax');
+                ajaxRequest.open("POST", "https://shapplist.pythonanywhere.com/api/listServices/api_createList", true);
+                ajaxRequest.setRequestHeader("content-type", "application/json; charset=utf-8");
+                data = JSON.stringify({"listname" : listName, "defaultLevel" : 1});
+
+                ajaxRequest.send(data);
+      }
+
+
+    </script>
+
+
+    <!--- Script Source Files -->
+    <script src="{% static 'ShappList/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'ShappList/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
+    <!--- End of Script Source Files -->
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+
+
+  </body>
+</html>

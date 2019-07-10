@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<title>ShappList</title>
+  	{% load static %}
+	<link rel="stylesheet" href="{% static 'ShappList/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'ShappList/css/ssettings.css' %}">
+	<link rel="stylesheet" href="{% static 'ShappList/css/fixed.css' %}">
+	<script type="text/javascript" src="{% static 'ShappList/js/authentication.js' %}"></script>
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+  </head>
+
+ <body data-spy="scroll" onload = "loadUserInfo()">
+
+      <div id="content">
+
+          <nav id="nav-mobile" class="navbar fixed-bottom">
+              <div class="row rowIcons">
+                <div class="col-4 text-center">
+                  <a href="lists"><i class="icon fas fa-list-alt fa-3x" ></i></a>
+                </div>
+                <div class="col-4 text-center">
+                    <a href="products"><i class="icon fas fa-shopping-bag fa-3x" ></i></a>
+                </div>
+                <div class="col-4 text-center">
+                    <a href="settings"><i class="icon fas fa-user-circle fa-3x" ></i></a>
+                </div>
+              </div> <!--- End Row -->
+          </nav><!--- End Navigation --->
+
+          <nav id="nav-desktop" class="navbar fixed-top">
+              <div class="row rowIcons">
+                <div class="col-4 text-center">
+                  <a href="lists"><i class="icon fas fa-list-alt" ></i></a>
+                </div>
+                <div class="col-4 text-center">
+                    <a href="products"><i class="icon fas fa-shopping-bag" ></i></a>
+                </div>
+                <div class="col-4 text-center">
+                    <a href="settings"><i class="icon fas fa-user-circle" ></i></a>
+                </div>
+              </div> <!--- End Row -->
+          </nav><!--- End Navigation --->
+
+          <!-- SETTINGS HEADER -->
+          <div class="row mySettings" style="background: #ff983f!important;">
+            <div class="col-12">
+              <span>Definições do Utilizador</span>
+
+            </div>
+          </div>
+
+          <a  href="#"><img class="logo" src="{% static 'ShappList/resources/logo-white.png' %}"></a>
+
+          <!-- SETTINGS EDIT ACCOUNT -->
+          <div id="filters">
+              <a href="edit_settings" >
+                <button class="btn float2" type="button">
+                    <i class="fas fa-edit"></i>
+                </button>
+              </a>
+          </div>
+
+          <!-- MY SETTINGS -->
+          <div class="container" >
+
+              <div class="row">
+                <div class="col-12 columnAtribute">
+                  <div class="groupSettings">
+                    <p>USERNAME</p>
+                    <span id="usernameField" ></span>
+                  </div>
+                  <div class="groupSettings">
+                    <p>EMAIL</p>
+                    <span id="mailField"></span>
+                  </div>
+                  <div class="groupSettings">
+                    <p>TELEMÓVEL</p>
+                    <span id="phoneField" ></span>
+                  </div>
+
+
+                </div>
+              </div>
+              <div class="row supress">
+                <div class="col-6 d-flex justify-content-center filterButton">
+                  <div id="filters">
+                      <a href="edit_settings" >
+                        <button class="btn float" type="button">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                      </a>
+                  </div>
+                </div>
+                <div class="col-6 d-flex justify-content-center ">
+                  <div class="buttonLogOut text-center">
+                    <button type="submit" onclick = "logOut()" class="logOut btn lgD">Terminar Sessão</button>
+                  </div>
+                </div>
+              </div>
+
+          </div>
+
+          <div id ="noInviteContainer" class="container invitesContainer" >
+
+
+
+          </div>
+          <div class="buttonLogOut text-center">
+                <button type="submit" onclick = "logOut()" class="logOut btn lgM">Terminar Sessão</button>
+              </div>
+
+      </div>
+    <script>
+
+        function loadUserInfo(){
+
+            sendRequestUserInfo();
+            sendRequestUserInvites();
+
+        }
+
+        function sendRequestUserInfo(){
+                console.log('Creating ajax object');
+                var ajaxRequest = new XMLHttpRequest();
+
+                ajaxRequest.onreadystatechange = function() {
+                    if (ajaxRequest.readyState == 4) {   // XMLHttpRequest.DONE == 4
+                        if (ajaxRequest.status == 200) {
+
+                            var responseData = JSON.parse(ajaxRequest.responseText);
+                            document.getElementById("usernameField").innerHTML = responseData['userInfo']['username'];
+                            document.getElementById("mailField").innerHTML = responseData['userInfo']['userMail'];
+                            document.getElementById("phoneField").innerHTML = responseData['userInfo']['phoneNum'];
+                        }
+                        else if (ajaxRequest.status == 400) {
+                            console.log('There was an error 400');
+                        }
+                        else {
+                            console.log('something else other than 200 was returned');
+                        }
+                    }
+                };
+                console.log('Sending ajax');
+                ajaxRequest.open("POST", "https://shapplist.pythonanywhere.com/api/listServices/api_fillInfo", true);
+                ajaxRequest.setRequestHeader("content-type", "application/json; charset=utf-8");
+                ajaxRequest.send();
+        }
+
+        function sendRequestUserInvites(){
+
+             console.log('Creating ajax object');
+                var ajaxRequest = new XMLHttpRequest();
+
+                ajaxRequest.onreadystatechange = function() {
+                    if (ajaxRequest.readyState == 4) {   // XMLHttpRequest.DONE == 4
+                        if (ajaxRequest.status == 200) {
+
+                            var responseData = JSON.parse(ajaxRequest.responseText);
+                            if(responseData.status == 400){
+                                noInvite = `<div class="row columnInvite">
+                                              <div class="col-12 columnAtribute">
+                                                <div class="">
+                                                  <p id= "noInvite">Não tem convites de listas para aceitar!</p>
+                                                </div>
+                                              </div>
+                                            </div>`
+                                document.getElementById("noInviteContainer").innerHTML = noInvite;
+                            }
+                            else{
+                                writeInvites(responseData);
+
+                            }
+                        }
+                        else if (ajaxRequest.status == 400) {
+                            console.log('There was an error 400');
+                        }
+                        else {
+                            console.log('something else other than 200 was returned');
+                        }
+                    }
+                };
+                console.log('Sending ajax');
+                ajaxRequest.open("POST", "https://shapplist.pythonanywhere.com/api/listServices/api_getUserInvites", true);
+                ajaxRequest.setRequestHeader("content-type", "application/json; charset=utf-8");
+                ajaxRequest.send();
+        }
+
+        function writeInvites(responseData){
+            var totalInvites = responseData['totalInvites'];
+            var finalHTML = '';
+
+            for(i = 0; i < totalInvites; i++){
+               tempHTML=  `<div class="row columnInvite">
+                  <div class="col-12 columnAtribute">
+                    <div class="">
+                      <p id="inviteOwner">Convite de: `+responseData['invite' + i.toString()]['listOwner'] +`</p>
+                      <span id="inviteListName">`+responseData['invite' + i.toString()]['listName']+`</span>
+                    </div>
+                    <div class="row">
+                      <div class="col-6 iconInvite d-flex justify-content-center">
+                        <a href="#" onClick = answerInvite(true,` +responseData['invite' + i.toString()]['listID'].toString() +`)><i class="fas fa-check-circle iconAccept"></i></a>
+                      </div>
+                      <div class="col-6 iconInvite d-flex justify-content-center">
+                        <a href="#" onClick = answerInvite(false,` +responseData['invite' + i.toString()]['listID'].toString() +`)><i class="fas fa-times-circle iconRefuse"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>`
+                finalHTML = finalHTML + tempHTML
+            }
+            document.getElementById("noInviteContainer").innerHTML = finalHTML;
+        }
+
+        function answerInvite(bool,listID){
+            if(bool){
+                sendAjaxAnswerInvite(true,listID);
+            }
+            else{
+                sendAjaxAnswerInvite(false,listID);
+            }
+
+        }
+
+        function sendAjaxAnswerInvite(bool,listID){
+            console.log('Creating ajax object');
+                var ajaxRequest = new XMLHttpRequest();
+
+                ajaxRequest.onreadystatechange = function() {
+                    if (ajaxRequest.readyState == 4) {   // XMLHttpRequest.DONE == 4
+                        if (ajaxRequest.status == 200) {
+
+                            var responseData = JSON.parse(ajaxRequest.responseText);
+                            sendRequestUserInvites();
+
+                        }
+                        else if (ajaxRequest.status == 400) {
+                            console.log('There was an error 400');
+                        }
+                        else {
+                            console.log('something else other than 200 was returned');
+                        }
+                    }
+                };
+                console.log('Sending ajax');
+                ajaxRequest.open("POST", "https://shapplist.pythonanywhere.com/api/listServices/api_replyToUserInvites", true);
+                data = JSON.stringify({"listID" : listID, "reply" : bool});
+                ajaxRequest.setRequestHeader("content-type", "application/json; charset=utf-8");
+                ajaxRequest.send(data);
+        }
+
+    </script>
+
+    <!--- Script Source Files -->
+    <script src="{% static 'ShappList/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'ShappList/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
+    <!--- End of Script Source Files -->
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+
+
+  </body>
+</html>

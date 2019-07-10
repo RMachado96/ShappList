@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<title>ShappList</title>
+  	{% load static %}
+	<link rel="stylesheet" href="{% static 'ShappList/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'ShappList/css/style_phone.css' %}">
+	<link rel="stylesheet" href="{% static 'ShappList/css/fixed.css' %}">
+	<script type="text/javascript" src="{% static 'ShappList/js/getProducts.js' %}"></script>
+
+    <!-- Font Awesome JS -->
+    <script rel="stylesheet" defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script rel="stylesheet" defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+  </head>
+
+  <body data-spy="scroll" onload="ajaxGetUserID()">
+
+    <!-- Navbar -->
+
+    <nav class="navbar fixed-bottom ">
+        <div class="row rowIcons">
+          <div class="col-4 text-center ">
+            <a href="lists"><i class="icon fas fa-list-alt fa-3x" ></i></a>
+          </div>
+          <div class="col-4 text-center ">
+              <a href="products"><i class="icon fas fa-shopping-bag fa-3x" ></i></a>
+          </div>
+          <div class="col-4 text-center ">
+              <a href="settings"><i class="icon fas fa-user-circle fa-3x"></i></a>
+          </div>
+        </div> <!--- End Row -->
+    </nav><!--- End Navigation --->
+
+        <!-- Sidebar  -->
+        <div id="sidebar" class="sidebar">
+          <a class="logo d-flex justify-content-center" href="#"><img src="{% static 'ShappList/resources/logo.png' %}"></a>
+          <ul class="smooth-scroll list-unstyled">
+
+            <div class="row text-center">
+              <div class="catHeader col-12">
+                <p>Categorias</p> <a href="javascript:void(0)" class="closebtn" onclick="sidebar()">×</a>
+              </div>
+            </div>
+
+            <div class="divCatBold">
+              <li class="outCats">
+                  <a class="" onclick="catMenuChange('','cat')">Ver todos</a>
+              </li>
+              <li class="outCats">
+                  <a class="" onclick="getDiscountedProducts()">Ver Produtos com Desconto</a>
+              </li>
+              <li class="">
+                  <a href="#submenu1" id="menu1" onclick="closeMenu(1)" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Mercearias</a>
+                  <ul class="collapse list-unstyled" id="submenu1">
+                      <li>
+                          <a href="#" onclick="catMenuChange('Mercearia','cat')">Ver Todos</a>
+                      </li>
+                      <li>
+                          <a href="#" onclick="catMenuChange('Arroz, Massa e Feijão','subCat')">Arroz, Massa e Feijão</a>
+                      </li>
+                      <li>
+                          <a href="#" onclick="catMenuChange('Açúcar, Farinha e Ovos','subCat')">Açúcar, Farinha e Ovos</a>
+                      </li>
+                      <li>
+                          <a href="#" onclick="catMenuChange('Azeite, Óleo e Vinagre','subCat')">Azeite, Óleo e Vinagre</a>
+                      </li>
+                      <li>
+                          <a href="#" onclick="catMenuChange('Temperos','subCat')">Temperos</a>
+                      </li>
+                      <li>
+                          <a href="#" onclick="catMenuChange('Cereais','subCat')">Cereais</a>
+                      </li>
+                      <li>
+                          <a href="#" onclick="catMenuChange('Snacks','subCat')">Snacks</a>
+                      </li>
+                      <li>
+                          <a href="#" onclick="catMenuChange('Conservas','subCat')">Conservas</a>
+                      </li>
+                      <li>
+                          <a href="#" onclick="catMenuChange('Café e Chá','subCat')">Café e Chá</a>
+                      </li>
+                  </ul>
+              </li>
+              <li class="">
+                  <a href="#submenu2" id="menu2" onclick="closeMenu(2)" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Frutas e Legumes</a>
+                  <ul class="collapse list-unstyled" id="submenu2">
+                      <li>
+                          <a href="#" onclick="catMenuChange('Frutas e Legumes','cat')">Ver Todos</a>
+                      </li>
+                      <li>
+                          <a href="#" onclick="catMenuChange('Fruta Fresca','subCat')">Fruta Fresca</a>
+                      </li>
+                      <li>
+                          <a href="#" onclick="catMenuChange('Fruta Embalada','subCat')">Fruta Embalada</a>
+                      </li>
+                      <li>
+                          <a href="#" onclick="catMenuChange('Legumes Frescos','subCat')">Legumes Frescos</a>
+                      </li>
+                      <li>
+                          <a href="#" onclick="catMenuChange('Legumes Embalados','subCat')">Legumes Embalados</a>
+                      </li>
+                  </ul>
+              </li>
+              <li class="">
+                  <a href="#submenu3" id="menu3" onclick="closeMenu(3)" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Carne e Peixe</a>
+                  <ul class="collapse list-unstyled" id="submenu3">
+                    <li>
+                        <a href="#" onclick="catMenuChange('Carne e Peixe','cat')">Ver Todos</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="catMenuChange('Carne Fresca','subCat')">Carne Fresca</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="catMenuChange('Carne Embalada','subCat')">Carne Embalada</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="catMenuChange('Peixe Fresco','subCat')">Peixe Fresco</a>
+                    </li>
+                </ul>
+              </li>
+              <li class="">
+                  <a href="#submenu4" id="menu4" onclick="closeMenu(4)" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Congelados</a>
+                  <ul class="collapse list-unstyled" id="submenu4">
+                    <li>
+                          <a href="#" onclick="catMenuChange('Congelados','cat')">Ver Todos</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="catMenuChange('Peixe Congelado','subCat')">Peixe Congelado</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="catMenuChange('Gelados e Sobremesas','subCat')">Gelados e Sobremesas</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="catMenuChange('Refeições Congeladas','subCat')">Refeições Congeladas</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="catMenuChange('Frutas e Legumes','subCat')">Frutas e Legumes</a>
+                    </li>
+                  </ul>
+              </li>
+              <li class="">
+                  <a href="#submenu5" id="menu5" onclick="closeMenu(5)" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Lacticínios</a>
+                  <ul class="collapse list-unstyled" id="submenu5">
+                    <li>
+                        <a href="#" onclick="catMenuChange('Lacticínios','cat')">Ver Todos</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="catMenuChange('Leites','subCat')">Leites</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="catMenuChange('Iogurtes','subCat')">Iogurtes</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="catMenuChange('Manteigas e Cremes Vegetais','subCat')">Manteigas e Cremes Vegetais</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="catMenuChange('Sobremesas','subCat')">Sobremesas</a>
+                    </li>
+                  </ul>
+              </li>
+              <li class="">
+                  <a href="#submenu6" id="menu6" onclick="closeMenu(6)" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Charcutaria e Queijos</a>
+                  <ul class="collapse list-unstyled" id="submenu6">
+                    <li>
+                        <a href="#" onclick="catMenuChange('Charcutaria e Queijos','cat')">Ver Todos</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="catMenuChange('Queijo','subCat')">Queijo</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="catMenuChange('Fiambre','subCat')">Fiambre</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="catMenuChange('Carnes Fumadas','subCat')">Carnes Fumadas</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="catMenuChange('Enchidos','subCat')">Enchidos</a>
+                    </li>
+                  </ul>
+              </li>
+              <li class="">
+                  <a href="#submenu7" id="menu7" onclick="closeMenu(7)" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Bebidas</a>
+                  <ul class="collapse list-unstyled" id="submenu7">
+                    <li>
+                        <a href="#" onclick="catMenuChange('Bebidas','cat')">Ver Todos</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="catMenuChange('Águas','subCat')">Águas</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="catMenuChange('Sumos e Refrigerantes','subCat')">Sumos e Refrigerantes</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="catMenuChange('Vinhos','subCat')">Vinhos</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="catMenuChange('Cervejas','subCat')">Cervejas</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="catMenuChange('Whisky e Espirituosas','subCat')">Whisky e Espirituosas</a>
+                    </li>
+                  </ul>
+              </li>
+              <li class="">
+                  <a href="#submenu8" id="menu8" onclick="closeMenu(8)" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Bolachas e Doces</a>
+                  <ul class="collapse list-unstyled" id="submenu8">
+                    <li>
+                        <a href="#" onclick="catMenuChange('Bolachas e Doces','cat')">Ver Todos</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="catMenuChange('Bolachas','subCat')">Bolachas</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="catMenuChange('Chocolates e Guloseimas','subCat')">Chocolates e Guloseimas</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="catMenuChange('Bolos e Sobremesas','subCat')">Bolos e Sobremesas</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="catMenuChange('Compotas e Cremes','subCat')">Compotas e Cremes</a>
+                    </li>
+                  </ul>
+              </li>
+            </div>
+
+          </ul>
+
+        </div>
+
+        <!-- Overlay Individual Product -->
+        <div class="overlayIndProd smooth-scroll" id="overlayIndProd">
+
+            <div class="divClosebtnIP text-right">
+              <p class="closebtnIP" onclick="closeOverlayProducts()">×</p>
+            </div>
+            <div class="row rowProductsIP">
+              <div class="col-12 text-center">
+                <img id= "imgInOverlay" class="img-fluidIP" src="{% static 'ShappList/resources/products/images/Acucar_sidul_pingo.jpg' %}">
+              </div>
+            </div>
+            <div class="row rowProductsIP">
+              <div class="col-12 ">
+               <img id="discountImg" class="over-imageIP" src="{% static 'ShappList/resources/products/discount.png' %}">
+              </div>
+            </div>
+            <div class="row rowProductsIP">
+              <div class="col-12 text-center nameDivIP">
+                <p id = "productNameInOverlay" class="nameIP"></p>
+              </div>
+            </div>
+            <div class="row rowProductsIP secondRowIP">
+              <div class="col-6 text-center">
+                <p class="brandIP">Pingo Doce</p>
+              </div>
+              <div class="col-6 text-center">
+                <p class="priceIP" id="pricePingoDoce"></p>
+              </div>
+            </div>
+            <div class="row rowProductsIP secondRowIP">
+              <div class="col-6 text-center">
+                <p class="brandIP">Continente</p>
+              </div>
+              <div class="col-6 text-center">
+                <p class="priceIP" id="priceContinente"></p>
+              </div>
+            </div>
+            <div class="row rowProductsIP secondRowIP">
+              <div class="col-6 text-center">
+                <p class="brandIP">Jumbo</p>
+              </div>
+              <div class="col-6 text-center">
+                <p class="priceIP" id="priceJumbo"></p>
+              </div>
+            </div>
+            <div class="row rowProductsIP">
+              <div class="col-12 text-center">
+                <button id="addProductButton" type="button" onclick="addProduct()" class="addProdIP btn">Adicionar Produto</button>
+              </div>
+            </div>
+            <div class ="row rowProductsIP">
+                 <div class="col-12 text-center infoMsg">
+                     <span id="discountedText">Produtos a vermelho estão com desconto!</span>
+                 </div>
+            </div>
+          </div>
+        <!-- Anti-Overlay IP + Add Product -->
+        <div class="anti-overlayIP" id="closeOverlayProducts" onclick="closeOverlayProducts()">
+
+        </div>
+        <!-- Overlay Add Product-->
+        <div class="overlayAddProduct" id="overlayAddProduct" >
+            <div id="errorMsg" class="errorMsg">
+                <p>Não tem nenhuma lista criada! Crie uma nova lista<a href="lists">aqui</a>!</p>
+            </div>
+            <div class="overlayAddProduct-content " id="overlayAddProductContainer">
+            </div>
+        </div>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+          <div class="row rowSearch fixed-right" style="background: #ff983f!important;">
+            <div class="col-10">
+              <input type="text" class="form-control textSearch" id="search" placeholder="Procurar Produto" onkeyup="getProductInfo('itemName','ASC')">
+            </div>
+            <div class="col-2">
+              <button type="submit" onclick = "getProductInfo()" class="btn btn_search"><i class="fas fa-search fa-lg isearch" data-fa-transform=""></i></button>
+            </div>
+          </div>
+
+          <div class="" id="filters">
+            <button onclick="buttonFilter()" class="btn float text-center" type="button">
+                <i class="fas fa-filter filterIcon" id="filterIcon" data-toggle="collapse"></i>
+                <p class="textIcon" id="textIcon"> Filtros </p>
+          	</button>
+          </div>
+
+          <div class="anti-overlay" id="cover" onclick="closeNav()">  </div>
+
+          <div class="overlay" id="myNav" onclick="closeNav()">
+              <div class="overlay-content">
+                <a onclick="getProductInfo('itemPrice','ASC')">Preço mais baixo</a>
+                <a onclick="getProductInfo('itemPrice','DESC')">Preço mais alto</a>
+                <a onclick="getProductInfo('itemName','ASC')">De A a Z</a>
+                <a onclick="getProductInfo('itemName','DESC')">De Z a A</a>
+              </div>
+          </div>
+
+
+            <div class="divbtnCat text-right">
+              <button type="button" id="sidebarCollapse" class="btn btnCat" onclick="sidebar()">
+                  <i class="fas fa-align-left"></i>
+                  <span id="spanCat" >Categorias</span>
+              </button>
+            </div>
+
+            <div class="overlayAddSuccess text-center" id="overlayAddSuccess">
+              <div class="">
+                <p>Produto Adicionado com Sucesso!</p>
+              </div>
+            </div>
+            <div class="container-fluid" >
+                <div class="row rowProducts text-left"  id="mainContainer" >
+                </div>
+            </div>
+
+
+        </div>
+
+    <script type="text/javascript" language="javascript">
+      var counter = 0;
+      var sideOpen = 0;
+      var width = window.screen.availWidth;
+      var height = window.screen.availHeight;
+      var counterIndProd = 0;
+      var openMenu = 0;
+      var localList = [];
+      var localID;
+      var localProduct = [];
+
+
+
+      function buttonFilter() {
+        if (counter == 0) {
+          document.getElementById("myNav").style.display = "block";
+          document.getElementById("cover").style.display = "block";
+          counter = 1;
+        }
+        else {
+          document.getElementById("myNav").style.display = "none";
+          document.getElementById("cover").style.display = "none";
+          counter = 0;
+        }
+      }
+
+      function closeNav() {
+        document.getElementById("myNav").style.display = "none";
+        document.getElementById("cover").style.display = "none";
+        counter = 0;
+      }
+
+      function closeMenu(menu){
+          if(openMenu!=0 && openMenu != menu){
+
+              document.getElementById("submenu" + openMenu).className ="list-unstyled collapsing";
+              document.getElementById("submenu" + openMenu).className ="list-unstyled collapse";
+              openMenu = menu;
+          }
+          else{
+              openMenu = menu;
+          }
+      }
+
+      function sidebar(){
+        if (width < 1200){
+          if (sideOpen == 0) {
+            document.getElementById("sidebarCollapse").style.width = "auto";
+            document.getElementById("spanCat").style.display = "none";
+            document.getElementById("sidebar").style.width = "100%";
+
+            document.getElementById("content").style.overflow = "hidden";
+            document.getElementById("content").style.margin = "0";
+            document.getElementById("content").style.height = "100%";
+            sideOpen = 1;
+          }
+          else {
+            document.getElementById("spanCat").style.display = "inline";
+            document.getElementById("sidebarCollapse").style.width = "auto";
+            document.getElementById("sidebar").style.width = "0";
+
+            document.getElementById("content").style.margin = "0";
+            document.getElementById("content").style.height = "100%";
+            document.getElementById("content").style.overflow = "auto";
+            sideOpen = 0;
+            }
+          }
+        }
+
+        function writeProductInfo(productIDs,storeIDs,imgPath,itemName,prices,discountedStores){
+                    document.getElementById("overlayIndProd").style.display = "block";
+                    document.getElementById("closeOverlayProducts").style.display = "block";
+                    document.getElementById("content").style.overflow = "hidden";
+                    document.getElementById("content").style.margin = "0";
+                    document.getElementById("content").style.height = "100%";
+                    document.getElementById("addProductButton").setAttribute('onClick','addProduct(['+productIDs+'])');
+                    document.getElementById("imgInOverlay").src = '/static/ShappList/resources/products' + imgPath;
+                    document.getElementById("productNameInOverlay").innerHTML = itemName;
+                    document.getElementById("pricePingoDoce").style.color ="#000000"
+                    document.getElementById("priceContinente").style.color ="#000000"
+                    document.getElementById("priceJumbo").style.color ="#000000"
+                    document.getElementById("discountedText").style.display = "none";
+
+
+                    if(storeIDs.includes(1)){
+                        var tempIndex = storeIDs.indexOf(1);
+                        document.getElementById("pricePingoDoce").innerHTML = prices[tempIndex].toString() + ' €';
+                        if(discountedStores.includes(1)){
+                            document.getElementById("pricePingoDoce").style.color ="#FB5A5A"
+                            document.getElementById("discountedText").style.display = "inline";
+                        }
+                    }
+                    else{
+                        document.getElementById("pricePingoDoce").innerHTML = "-";
+                    }
+
+                    if(storeIDs.includes(2)){
+                        var tempIndex = storeIDs.indexOf(2);
+                        document.getElementById("priceContinente").innerHTML = prices[tempIndex].toString() + ' €';
+                        if(discountedStores.includes(2)){
+                            document.getElementById("priceContinente").style.color ="#FB5A5A"
+                            document.getElementById("discountedText").style.display = "inline";
+                        }
+                    }
+                    else{
+                        document.getElementById("priceContinente").innerHTML = "-";
+                    }
+
+                    if(storeIDs.includes(3)){
+                        var tempIndex = storeIDs.indexOf(3);
+                        document.getElementById("priceJumbo").innerHTML = prices[tempIndex].toString() + ' €';
+                        if(discountedStores.includes(3)){
+                            document.getElementById("priceJumbo").style.color ="#FB5A5A"
+                            document.getElementById("discountedText").style.display = "inline";
+                        }
+                    }
+                    else{
+                        document.getElementById("priceJumbo").innerHTML = "-";
+                    }
+
+                    localProduct = productIDs
+        }
+
+        function showOverlayIndProd(productIDs,storeIDs,imgPath,itemName,prices) {
+            if(width <= 1200){
+                if (counterIndProd == 0) {
+                    writeProductInfo(productIDs,storeIDs,imgPath,itemName,prices);
+                    counterIndProd = 1;
+                }
+            }
+        }
+
+         function showOverlayIndProdDivFluid(productIDs,storeIDs,imgPath,itemName,prices,isDiscounted,discountedStores) {
+            if(isDiscounted){
+                document.getElementById("discountImg").style.display = "inline";
+            }
+            else if(!isDiscounted){
+                document.getElementById("discountImg").style.display = "none";
+            }
+            if (counterIndProd == 0) {
+              document.getElementById("overlayIndProd").style.display = "block";
+              document.getElementById("closeOverlayProducts").style.display = "block";
+              writeProductInfo(productIDs,storeIDs,imgPath,itemName,prices,discountedStores);
+              counterIndProd = 1;
+            }
+
+        }
+
+        function addProduct(productIDs) {
+            if(localStorage.activeList){
+                if(localStorage.activeList != 0){
+                    document.getElementById("overlayAddProduct").style.display = "block";
+                    document.getElementById("closeOverlayProducts").style.zIndex = "11";
+                    sendAjaxGetList();
+                }
+                else{
+
+                    document.getElementById("overlayAddProduct").style.display ="block";
+                    document.getElementById("closeOverlayProducts").style.zIndex = "11";
+                    document.getElementById("errorMsg").style.display ="inline";
+
+
+                    //do something here
+                }
+            }
+            else{
+
+                    document.getElementById("overlayAddProduct").style.display ="block";
+                    document.getElementById("closeOverlayProducts").style.zIndex = "11";
+                    document.getElementById("errorMsg").style.display ="inline";
+
+
+                    //do something here
+            }
+
+
+        }
+
+        function writeLists(responseData,userID){
+            var checked = "";
+            var totalItems = responseData['listCount'];
+            var finalHTML = `<div class="row ">
+                  <div class="col-12 ">
+                    <p> ADICIONAR A </p> <a href="javascript:void(0)" class="closebtnAP" onclick="closeOverlayProducts()">×</a>
+                  </div>
+                </div>`;
+
+            var htmlButton = `<div class="row ">
+                  <div class="col-12 text-center">
+                    <button type="button" onclick="sendProductRequestButNowItsDifferent([`+ localProduct +`])" class="addProdToList btn">ADICIONAR PRODUTO</button>
+                  </div>
+                </div>`;
+
+            for(i = 0; i < totalItems; i++){
+                if(responseData['lists']['list' + (i+1).toString()]['listID'] == localStorage.activeList){
+                    checked = "checked";
+                    localList.push(responseData['lists']['list' + (i+1).toString()]['listID']);
+                }
+                else{
+                    checked = "";
+                }
+
+                var tempHTML = `<div class="row lists text-left">
+                    <div class="col-10 lists">
+                        <a href="#">` + responseData['lists']['list' + (i+1).toString()]['listName'] +`</a>
+                    </div>
+                    <div class="col-2 lists">
+                        <label class="containerC">
+                        <input type="checkbox" `+checked+` onchange = "localListID(`+responseData['lists']['list' + (i+1).toString()]['listID'].toString()+`)">
+                        <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    </div>`;
+                finalHTML = finalHTML + '\n' + tempHTML;
+            }
+            finalHTML = finalHTML + '\n' + htmlButton;
+            document.getElementById("overlayAddProductContainer").innerHTML = finalHTML;
+        }
+
+        function localListID(listID){
+
+          if(localList.includes(listID)){
+            tempIndex = localList.indexOf(listID);
+            localList.splice(tempIndex,1);
+          }
+          else{
+            localList.push(listID);
+          }
+          console.log(localList);
+        }
+
+        function quickAddProduct(productsID){
+            if(localStorage.activeList){
+                if(localStorage.activeList != 0){
+                    localList = [];
+                    localList.push(localStorage.activeList);
+                    sendProductRequestButNowItsDifferent(productsID);
+                }
+                else{
+
+                    document.getElementById("overlayAddProduct").style.display ="block";
+                    document.getElementById("errorMsg").style.display ="inline";
+                    closePopUp("errorMsg",2500)
+
+                    //do something here
+                }
+            }
+            else{
+
+                    document.getElementById("overlayAddProduct").style.display ="block";
+                    document.getElementById("errorMsg").style.display ="inline";
+                    closePopUp("errorMsg",2500)
+
+                    //do something here
+            }
+        }
+
+        function ajaxGetUserID(){
+          console.log('Creating ajax object');
+                var ajaxRequest = new XMLHttpRequest();
+                ajaxRequest.onreadystatechange = function() {
+                    if (ajaxRequest.readyState == 4) {   // XMLHttpRequest.DONE == 4
+                        if (ajaxRequest.status == 200) {
+
+                            var responseData = JSON.parse(ajaxRequest.responseText);
+                            localUserID(responseData);
+                        }
+                        else if (ajaxRequest.status == 400) {
+                            console.log('There was an error 400');
+                        }
+                        else {
+                            console.log('something else other than 200 was returned');
+                        }
+                    }
+                };
+                console.log('Sending ajax');
+                ajaxRequest.open("POST", "https://shapplist.pythonanywhere.com/api/listServices/api_getUserID", true);
+                ajaxRequest.setRequestHeader("content-type", "application/json; charset=utf-8");
+                ajaxRequest.send();
+        }
+
+        function localUserID(responseData){
+          localID = responseData['userID'];
+        }
+
+        function sendAjaxGetList(){
+            console.log('Creating ajax object');
+                var ajaxRequest = new XMLHttpRequest();
+                ajaxRequest.onreadystatechange = function() {
+                    if (ajaxRequest.readyState == 4) {   // XMLHttpRequest.DONE == 4
+                        if (ajaxRequest.status == 200) {
+
+                            var responseData = JSON.parse(ajaxRequest.responseText);
+                            writeLists(responseData)
+                        }
+                        else if (ajaxRequest.status == 400) {
+                            console.log('There was an error 400');
+                        }
+                        else {
+                            console.log('something else other than 200 was returned');
+                        }
+                    }
+                };
+                console.log('Sending ajax');
+                ajaxRequest.open("POST", "https://shapplist.pythonanywhere.com/api/listServices/api_getList", true);
+                ajaxRequest.setRequestHeader("content-type", "application/json; charset=utf-8");
+
+                ajaxRequest.send();
+        }
+
+        function sendProductRequestButNowItsDifferent(productIDs){
+
+                console.log('Creating ajax object');
+                var ajaxRequest = new XMLHttpRequest();
+                ajaxRequest.onreadystatechange = function() {
+                    if (ajaxRequest.readyState == 4) {   // XMLHttpRequest.DONE == 4
+                        if (ajaxRequest.status == 200) {
+
+                            var responseData = JSON.parse(ajaxRequest.responseText);
+                            newItemLoop(responseData);
+
+                        }
+                        else if (ajaxRequest.status == 400) {
+                            console.log('There was an error 400');
+                        }
+                        else {
+                            console.log('something else other than 200 was returned');
+                        }
+                    }
+                };
+                console.log('Sending ajax');
+                ajaxRequest.open("POST", "https://shapplist.pythonanywhere.com/api/productServices/api_getProductLowestPrice", true);
+                ajaxRequest.setRequestHeader("content-type", "application/json; charset=utf-8");
+                data = JSON.stringify({'baseProductID' : productIDs[0]})
+                ajaxRequest.send(data);
+        }
+
+        function newItemLoop(response){
+            bestID = response['bestID'];
+            for(i = 0; i < localList.length; i++){
+                sendNewProduct(bestID,localList[i]);
+            }
+            localList = [];
+            closeOverlayProducts();
+        }
+
+        function sendNewProduct(bestID,listID){
+            console.log('Creating ajax object');
+                var ajaxRequest = new XMLHttpRequest();
+                ajaxRequest.onreadystatechange = function() {
+                    if (ajaxRequest.readyState == 4) {   // XMLHttpRequest.DONE == 4
+                        if (ajaxRequest.status == 200) {
+
+                            var responseData = JSON.parse(ajaxRequest.responseText);
+                            document.getElementById("overlayAddSuccess").style.display = "block";
+                            closePopUp("overlayAddSuccess",2500);
+
+                        }
+
+
+
+                        else if (ajaxRequest.status == 400) {
+                            console.log('There was an error 400');
+                        }
+                        else {
+                            console.log('something else other than 200 was returned');
+                        }
+                    }
+                };
+                console.log('Sending ajax');
+                ajaxRequest.open("POST", "https://shapplist.pythonanywhere.com/api/listServices/api_addProducts", true);
+                ajaxRequest.setRequestHeader("content-type", "application/json; charset=utf-8");
+                data = JSON.stringify({'productID' : bestID, 'listID' : listID,'tag':true});
+                ajaxRequest.send(data);
+
+        }
+
+        function closePopUp(id,timer){
+            setTimeout(function() { document.getElementById(id).style.display = "none";}, timer);
+        }
+
+        function closeOverlayProducts() {
+          document.getElementById("overlayAddProduct").style.display = "none";
+          document.getElementById("overlayIndProd").style.display = "none";
+          document.getElementById("closeOverlayProducts").style.display = "none";
+          document.getElementById("closeOverlayProducts").style.zIndex = "9";
+          document.getElementById("content").style.margin = "0";
+          document.getElementById("content").style.height = "100%";
+          document.getElementById("content").style.overflow = "auto";
+          counterIndProd = 0;
+        }
+
+        getProductInfo('itemName','ASC')
+
+    </script>
+
+    <!--- Script Source Files -->
+    <script src="{% static 'ShappList/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'ShappList/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script rel="stylesheet" src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
+    <!--- End of Script Source Files -->
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+</body>
+</html>
