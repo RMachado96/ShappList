@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'b7*=f$d3u2&!nhupq%to2v1r*e#ye33tu+xx+i0qf9jf@)t2a1'
+SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 CORS_ORIGIN_ALLOW_ALL = True
-ALLOWED_HOSTS = [u'ShappList.pythonanywhere.com']
+ALLOWED_HOSTS = ['']
 #CORS_ORIGIN_REGEX_WHITELIST = (r"^null$",)
 CORS_ALLOW_METHODS = [
     'DELETE',
@@ -114,13 +114,6 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 #}
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ShappList$mainDB',
-        'USER': 'ShappList',
-        'PASSWORD': 'shapplistmaindatabase',
-        'HOST': 'ShappList.mysql.pythonanywhere-services.com',
-    }
 }
 
 
@@ -177,7 +170,7 @@ STATICFILES_DIRS = (
 #################################################################
 
 EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = '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'
+EMAIL_PORT = 
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = True
